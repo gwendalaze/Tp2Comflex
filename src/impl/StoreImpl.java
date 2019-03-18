@@ -27,7 +27,11 @@ public class StoreImpl implements Store {
 	     * Constructs a new StoreImpl
 	     */
 	    public StoreImpl(Provider prov, Bank bk) {
-	        provider = prov;
+	        init(prov,bk);
+	    }
+	    
+	    public void init(Provider prov, Bank bk){
+	    	provider = prov;
 	        bank = bk;
 	    }
 

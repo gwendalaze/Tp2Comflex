@@ -14,6 +14,10 @@ public class ClientImpl implements Runnable, Client{
     private Store store;
 
     public ClientImpl (Store s){
+    	init(s);
+    }
+    
+    public void init(Store s){
     	store = s;
     }
 
