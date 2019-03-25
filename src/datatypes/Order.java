@@ -19,10 +19,10 @@ public class Order {
     /** The index of this order. */
     private int num;
     
-    private Client client;
+    /*private Client client;
     private Object item;
     private String address;
-    private String bankAccountRef;
+    private String bankAccountRef;*/
     
     /** The date at which the ordered is issued. */
     public Date date;
@@ -47,9 +47,9 @@ public class Order {
     
     public Order(Client client, String address, String bankAccountRef) {
         this();
-        this.client = client;
+        /*this.client = client;
         this.address = address;
-        this.bankAccountRef = bankAccountRef;
+        this.bankAccountRef = bankAccountRef;*/
     }
     
     /**

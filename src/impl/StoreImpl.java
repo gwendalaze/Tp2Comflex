@@ -153,14 +153,14 @@ public class StoreImpl implements Store {
 	     * keys = order keys as Integers
 	     * values = Order instances
 	     */
-	    private Map<Integer, Order> orders = new HashMap();
+	    private Map<Integer, Order> orders = new HashMap<>();
 	    
 	    /** 
 	     * A map of items available in the stock of the store.
 	     * keys = the references of the items as Objects
 	     * values = ItemInStock instances
 	     */
-	    private Map itemsInStock = new HashMap();
+	    private Map itemsInStock = new HashMap<>();
 
 	    /**
 	     * Used by a client to order an item.

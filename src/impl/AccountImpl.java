@@ -1,8 +1,9 @@
-package datatypes;
+package impl;
 
+import interfaces.Account;
 import exception.InsufficientBalanceException;
 
-public class Account {
+public class AccountImpl implements Account{
 
     private double amount;
     private String owner;
@@ -43,7 +44,7 @@ public class Account {
         if( ! (other instanceof Account) )
             return false;
         Account otherAccount = (Account) other;
-        return ( otherAccount.owner == owner);
+        return ( otherAccount.getOwner() == owner);
     }
     
 }

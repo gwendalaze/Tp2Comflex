@@ -1,7 +1,7 @@
 package impl;
 
+import interfaces.Account;
 import interfaces.Bank;
-import datatypes.Account;
 import exception.InsufficientBalanceException;
 import exception.UnknownAccountException;
 
@@ -10,11 +10,7 @@ public class BankImpl implements Bank {
 	private Account estore;
 	private Account anne, bob;
 
-	public BankImpl () {
-		estore = new Account();
-		anne = new Account();
-		bob = new Account();
-		
+	public BankImpl (Account in_estore, Account in_anne, Account in_bob) {		
 		estore.setOwner("Estore");
 		estore.setAmount(0);
 		anne.setOwner("Anne");
