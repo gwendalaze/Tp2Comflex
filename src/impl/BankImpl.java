@@ -1,49 +1,47 @@
 package impl;
 
-import interfaces.Account;
-import interfaces.Bank;
+import interfaces.IAdmin;
+import interfaces.IBalanceMgt;
+import interfaces.ITransfert;
 import exception.InsufficientBalanceException;
 import exception.UnknownAccountException;
 
-public class BankImpl implements Bank {
+public class BankImpl implements ITransfert {
 
-	private Account estore;
-	private Account anne, bob;
+	private IAdmin estore, anne, bob;
+	private IBalanceMgt estore_b, anne_b, bob_b;
 
-	public BankImpl (Account in_estore, Account in_anne, Account in_bob) {		
+	public BankImpl (IAdmin in_estore, IAdmin in_anne, IAdmin in_bob,
+			IBalanceMgt in_estore_b, IBalanceMgt in_anne_b,IBalanceMgt in_bob_b) {
+		estore = in_estore;
+		estore_b = in_estore_b;
+		anne = in_anne;
+		anne_b = in_anne_b;
+		bob = in_bob;
+		bob_b = in_bob_b;
 		estore.setOwner("Estore");
-		estore.setAmount(0);
+		estore_b.credit(0);
 		anne.setOwner("Anne");
-		anne.setAmount(30);
+		anne_b.credit(30);
 		bob.setOwner("Bob");
-		bob.setAmount(100);
+		bob_b.credit(100);
 	}
 	
      public void transfert(String from, String to, double amount)
         throws InsufficientBalanceException, UnknownAccountException {
-        Account Afrom=null, Ato=null;        
+    	 IBalanceMgt Afrom=null, Ato=null;        
  
-        if (from.equals("E-Store")) Afrom = estore;
-        	if (from.equals("Anne")) Afrom = anne;
-        	if (from.equals("Bob")) Afrom = bob;
+        if (from.equals("E-Store")) Afrom = estore_b;
+        	if (from.equals("Anne")) Afrom = anne_b;
+        	if (from.equals("Bob")) Afrom = bob_b;
         	
-        	if (to.equals("E-Store")) Ato = estore;
-        	if (to.equals("Anne")) Ato = anne;
-        	if (to.equals("Bob")) Ato = bob;
-        	
-            // Get the balance of the account to widthdraw
-            double fromBalance = Afrom.getAmount();
-            
-            // Check whether the account is sufficiently balanced
-            if ( fromBalance < amount )
-                throw new InsufficientBalanceException(from.toString());
-            
-            // Get the balance of the account to credit
-            double toBalance = Ato.getAmount();
+        	if (to.equals("E-Store")) Ato = estore_b;
+        	if (to.equals("Anne")) Ato = anne_b;
+        	if (to.equals("Bob")) Ato = bob_b;
             
             // Perform the transfert
-			Afrom.setAmount( fromBalance - amount );
-			Ato.setAmount( toBalance + amount );
+			Afrom.withdraw(amount);
+			Ato.credit(amount);
     }
     
  }

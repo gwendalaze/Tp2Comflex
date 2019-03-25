@@ -1,9 +1,11 @@
 package impl;
 
-import interfaces.Bank;
-import interfaces.Client;
-import interfaces.Provider;
-import interfaces.Store;
+import interfaces.ITransfert;
+import interfaces.IClient;
+import interfaces.IConsult;
+import interfaces.IFastLane;
+import interfaces.ILane;
+import interfaces.IProvider;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -18,19 +20,19 @@ import exception.InvalidCartException;
 import exception.UnknownAccountException;
 import exception.UnknownItemException;
 
-public class StoreImpl implements Store {
+public class StoreImpl implements ILane, IFastLane,IConsult {
 
-	    private Provider provider;
-	    private Bank bank;
+	    private IProvider provider;
+	    private ITransfert bank;
 
 	    /**
 	     * Constructs a new StoreImpl
 	     */
-	    public StoreImpl(Provider prov, Bank bk) {
+	    public StoreImpl(IProvider prov, ITransfert bk) {
 	        init(prov,bk);
 	    }
 	    
-	    public void init(Provider prov, Bank bk){
+	    public void init(IProvider prov, ITransfert bk){
 	    	provider = prov;
 	        bank = bk;
 	    }
@@ -86,7 +88,7 @@ public class StoreImpl implements Store {
 	    @Override
 	    public Cart addItemToCart(
 	            Cart cart,
-	            Client client,
+	            IClient client,
 	            Object item,
 	            int qty )
 	    throws UnknownItemException, InvalidCartException {
@@ -181,7 +183,7 @@ public class StoreImpl implements Store {
 	     */
 	    @Override
 	    public Order oneShotOrder(
-	            Client client,
+	            IClient client,
 	            Object item,
 	            int qty,
 	            String address,
@@ -242,7 +244,7 @@ public class StoreImpl implements Store {
 	        ItemInStock iis = (ItemInStock) itemsInStock.get(item);
 	        if ( iis == null ) {
 	            int quantity = qty + more;
-	            delay += provider.order(this,item,quantity);
+	            delay += provider.order(item,quantity);
 	            ItemInStock newItem = new ItemInStock(item,more,price,provider);
 	            itemsInStock.put(item,newItem);
 	        }
@@ -256,7 +258,7 @@ public class StoreImpl implements Store {
 	            else {
 	                // An order to the provider needs to be issued
 	                int quantity = qty + more;
-	                delay += provider.order(this,item,quantity);
+	                delay += provider.order(item,quantity);
 	                iis.quantity += more;
 	            }
 	        }

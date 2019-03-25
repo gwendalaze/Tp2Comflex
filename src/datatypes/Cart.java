@@ -1,6 +1,6 @@
 package datatypes;
 
-import interfaces.Client;
+import interfaces.IClient;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,13 +8,13 @@ import java.util.Map;
 public class Cart {
     
     /** The client owning the cart. */
-    public Client client;
+    public IClient client;
     
     /** The items currently added to the cart. key=item, value=quantity. */
     private Map<Object, Integer> items = new HashMap<Object, Integer>();
     
     
-    public Cart(Client client) {
+    public Cart(IClient client) {
         this.client = client;
     }
     

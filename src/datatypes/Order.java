@@ -1,6 +1,6 @@
 package datatypes;
 
-import interfaces.Client;
+import interfaces.IClient;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -45,7 +45,7 @@ public class Order {
         date = new Date();
     }
     
-    public Order(Client client, String address, String bankAccountRef) {
+    public Order(IClient client, String address, String bankAccountRef) {
         this();
         /*this.client = client;
         this.address = address;

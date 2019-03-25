@@ -1,9 +1,10 @@
 package impl;
 
-import interfaces.Account;
+import interfaces.IAdmin;
+import interfaces.IBalanceMgt;
 import exception.InsufficientBalanceException;
 
-public class AccountImpl implements Account{
+public class AccountImpl implements IAdmin,IBalanceMgt{
 
     private double amount;
     private String owner;
@@ -28,6 +29,7 @@ public class AccountImpl implements Account{
         this.amount += amount;        
     }
 
+    @Override
     public void withdraw(double amount) throws InsufficientBalanceException {
         if ( this.amount < amount )
             throw new InsufficientBalanceException(owner);
@@ -41,10 +43,15 @@ public class AccountImpl implements Account{
      * we should have a account number.
      */
     public boolean equals( Object other ) {
-        if( ! (other instanceof Account) )
+        if( ! (other instanceof IAdmin) )
             return false;
-        Account otherAccount = (Account) other;
+        IAdmin otherAccount = (IAdmin) other;
         return ( otherAccount.getOwner() == owner);
     }
+
+	@Override
+	public double getBalance() {
+		return amount;
+	}
     
 }

@@ -1,6 +1,6 @@
 package datatypes;
 
-import interfaces.Provider;
+import interfaces.IProvider;
 
 public class ItemInStock {
     
@@ -13,14 +13,14 @@ public class ItemInStock {
     public Object item;
     public int quantity;
     public double price;
-    public Provider provider;
+    public IProvider provider;
 
     private ItemInStock() {
         num = numItems++;        
     }
     
     public ItemInStock(Object item, int quantity, double price,
-            Provider provider) {
+            IProvider provider) {
         this();
         this.item = item;
         this.quantity = quantity;

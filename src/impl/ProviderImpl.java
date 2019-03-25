@@ -1,14 +1,13 @@
 package impl;
 
-import interfaces.Provider;
-import interfaces.Store;
+import interfaces.IProvider;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import exception.UnknownItemException;
 
-public class ProviderImpl implements Provider{
+public class ProviderImpl implements IProvider{
     	
     private Map<String, Double> itemPrices = new HashMap<String, Double>();
 
@@ -45,9 +44,9 @@ public class ProviderImpl implements Provider{
      * @param store  the store that emits the order
      * @param item   the item ordered
      * @param qty    the quantity ordered
-     * @return       the delay (in hours)
+     * @return       the delay (in hours)s
      */
-    public int order(Store store, Object item, int qty )
+    public int order(Object item, int qty )
     throws UnknownItemException {
         
         if ( ! itemPrices.containsKey(item) )

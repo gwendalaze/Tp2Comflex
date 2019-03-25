@@ -5,21 +5,20 @@ import impl.BankImpl;
 import impl.ClientImpl;
 import impl.ProviderImpl;
 import impl.StoreImpl;
-import interfaces.Account;
-import interfaces.Bank;
-import interfaces.Provider;
-import interfaces.Store;
+import interfaces.ITransfert;
+import interfaces.IProvider;
 
 public class MainClass {
 
     public static void main (String [] args) {
-		Provider prov = new ProviderImpl();
-		Account accAnne = new AccountImpl();
-		Account accBob = new AccountImpl();
-		Account accEStore = new AccountImpl();
-		Bank bank = new BankImpl(accAnne,accBob,accEStore);
-		Store store = new StoreImpl(prov,bank);
-		ClientImpl cl = new ClientImpl(store);
+		IProvider prov = new ProviderImpl();
+		AccountImpl accAnne = new AccountImpl();
+		AccountImpl accBob = new AccountImpl();
+		AccountImpl accEStore = new AccountImpl();
+		ITransfert bank = new BankImpl(accEStore,accAnne,accBob,
+										accEStore,accAnne,accBob);
+		StoreImpl store = new StoreImpl(prov,bank);
+		ClientImpl cl = new ClientImpl(store,store,store);
 		
 		cl.run();
     }

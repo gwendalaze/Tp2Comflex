@@ -1,10 +1,8 @@
 package interfaces;
 
-public interface Account {
+public interface IAdmin {
 
-	void setAmount(double d);
 
-	double getAmount();
 
 	void setOwner(String string);
 

@@ -1,7 +1,9 @@
 package impl;
 
-import interfaces.Client;
-import interfaces.Store;
+import interfaces.IClient;
+import interfaces.IConsult;
+import interfaces.IFastLane;
+import interfaces.ILane;
 import datatypes.Cart;
 import datatypes.Order;
 import exception.InsufficientBalanceException;
@@ -9,16 +11,16 @@ import exception.InvalidCartException;
 import exception.UnknownAccountException;
 import exception.UnknownItemException;
 
-public class ClientImpl implements Runnable, Client{
+public class ClientImpl implements Runnable, IClient{
 
-    private Store store;
+    private ILane store;
+    private IFastLane storeFTL;
+    private IConsult storeFront;
 
-    public ClientImpl (Store s){
-    	init(s);
-    }
-    
-    public void init(Store s){
-    	store = s;
+    public ClientImpl (ILane in_store, IFastLane in_storeFTL, IConsult in_storeFront){
+    	this.store = in_store;
+    	this.storeFTL = in_storeFTL;
+    	this.storeFront = in_storeFront;
     }
 
     public void run() {
@@ -57,7 +59,7 @@ public class ClientImpl implements Runnable, Client{
     InsufficientBalanceException, UnknownAccountException{
         
         System.out.println("Ordering "+qty+" "+item+" for "+account+"...");
-        Order order = store.oneShotOrder(this,item,qty,address,account);
+        Order order = storeFTL.oneShotOrder(this,item,qty,address,account);
         System.out.println(order);
     }
 
