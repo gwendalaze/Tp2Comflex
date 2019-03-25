@@ -47,11 +47,5 @@ public class AccountImpl implements IAdmin,IBalanceMgt{
             return false;
         IAdmin otherAccount = (IAdmin) other;
         return ( otherAccount.getOwner() == owner);
-    }
-
-	@Override
-	public double getBalance() {
-		return amount;
-	}
-    
+    }    
 }
