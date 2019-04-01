@@ -1,4 +1,4 @@
-package impl;
+package metier;
 
 import interfaces.IClient;
 import interfaces.IConsult;
