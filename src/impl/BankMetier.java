@@ -6,12 +6,12 @@ import interfaces.ITransfert;
 import exception.InsufficientBalanceException;
 import exception.UnknownAccountException;
 
-public class BankImpl implements ITransfert {
+public class BankMetier implements ITransfert {
 
 	private IAdmin estore, anne, bob;
 	private IBalanceMgt estore_b, anne_b, bob_b;
 
-	public BankImpl (IAdmin in_estore, IAdmin in_anne, IAdmin in_bob,
+	public BankMetier (IAdmin in_estore, IAdmin in_anne, IAdmin in_bob,
 			IBalanceMgt in_estore_b, IBalanceMgt in_anne_b,IBalanceMgt in_bob_b) {
 		estore = in_estore;
 		estore_b = in_estore_b;

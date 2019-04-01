@@ -20,7 +20,7 @@ import exception.InvalidCartException;
 import exception.UnknownAccountException;
 import exception.UnknownItemException;
 
-public class StoreImpl implements ILane, IFastLane,IConsult {
+public class StoreMetier implements ILane, IFastLane,IConsult {
 
 	    private IProvider provider;
 	    private ITransfert bank;
@@ -28,7 +28,7 @@ public class StoreImpl implements ILane, IFastLane,IConsult {
 	    /**
 	     * Constructs a new StoreImpl
 	     */
-	    public StoreImpl(IProvider prov, ITransfert bk) {
+	    public StoreMetier(IProvider prov, ITransfert bk) {
 	        init(prov,bk);
 	    }
 	    

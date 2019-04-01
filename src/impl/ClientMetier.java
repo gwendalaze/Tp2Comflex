@@ -11,13 +11,13 @@ import exception.InvalidCartException;
 import exception.UnknownAccountException;
 import exception.UnknownItemException;
 
-public class ClientImpl implements Runnable, IClient{
+public class ClientMetier implements Runnable, IClient{
 
     private ILane store;
     private IFastLane storeFTL;
     private IConsult storeFront;
 
-    public ClientImpl (ILane in_store, IFastLane in_storeFTL, IConsult in_storeFront){
+    public ClientMetier (ILane in_store, IFastLane in_storeFTL, IConsult in_storeFront){
     	this.store = in_store;
     	this.storeFTL = in_storeFTL;
     	this.storeFront = in_storeFront;

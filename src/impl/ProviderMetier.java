@@ -7,14 +7,14 @@ import java.util.Map;
 
 import exception.UnknownItemException;
 
-public class ProviderImpl implements IProvider{
+public class ProviderMetier implements IProvider{
     	
     private Map<String, Double> itemPrices = new HashMap<String, Double>();
 
     /**
      * Constructs a new ProviderImpl
      */
-    public ProviderImpl() {
+    public ProviderMetier() {
         itemPrices.put("CD",new Double(15));
         itemPrices.put("DVD",new Double(20));
     }

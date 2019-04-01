@@ -4,7 +4,7 @@ import interfaces.IAdmin;
 import interfaces.IBalanceMgt;
 import exception.InsufficientBalanceException;
 
-public class AccountImpl implements IAdmin,IBalanceMgt{
+public class AccountMetier implements IAdmin,IBalanceMgt{
 
     private double amount;
     private String owner;
